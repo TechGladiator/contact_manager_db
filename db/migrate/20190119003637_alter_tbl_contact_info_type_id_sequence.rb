@@ -1,6 +1,6 @@
 class AlterTblContactInfoTypeIdSequence < ActiveRecord::Migration[5.2]
   def up
-    # create sequence for tbl_contact_info_type
+    # alter sequence for tbl_contact_info_type
     execute <<-SQL
     ALTER SEQUENCE tbl_contact_info_type_id_seq
         INCREMENT 1

@@ -1,6 +1,6 @@
 class AlterTblStatesIdSequence < ActiveRecord::Migration[5.2]
   def up
-    # create sequence for tbl_states
+    # alter sequence for tbl_states
     execute <<-SQL
     ALTER SEQUENCE tbl_states_id_seq
         INCREMENT 1

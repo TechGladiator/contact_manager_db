@@ -1,6 +1,6 @@
-class CreateTblAddressInfoSequence < ActiveRecord::Migration[5.2]
+class AlterTblAddressInfoSequence < ActiveRecord::Migration[5.2]
     def up
-        # create sequence for tbl_address_info
+        # alter sequence for tbl_address_info
         execute <<-SQL
         ALTER SEQUENCE tbl_address_info_id_seq
             INCREMENT 1
