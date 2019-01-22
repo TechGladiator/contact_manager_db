@@ -210,7 +210,7 @@ CREATE TABLE public.tbl_contact_type (
 
 CREATE SEQUENCE public.tbl_contact_type_id_seq
     AS integer
-    START WITH 1
+    START WITH 1001
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
@@ -240,7 +240,7 @@ CREATE TABLE public.tbl_import (
 
 CREATE SEQUENCE public.tbl_import_id_seq
     AS integer
-    START WITH 1
+    START WITH 1001
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
@@ -271,7 +271,7 @@ CREATE TABLE public.tbl_states (
 
 CREATE SEQUENCE public.tbl_states_id_seq
     AS integer
-    START WITH 1
+    START WITH 1001
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
@@ -464,6 +464,9 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190118210154'),
 ('20190118215944'),
 ('20190119003215'),
-('20190119003637');
+('20190119003637'),
+('20190122231634'),
+('20190122232102'),
+('20190122232349');
 
 
