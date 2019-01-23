@@ -164,10 +164,10 @@ ALTER SEQUENCE public.tbl_contact_info_id_seq OWNED BY public.tbl_contact_info.i
 
 
 --
--- Name: tbl_contact_info_type; Type: TABLE; Schema: public; Owner: -
+-- Name: tbl_contact_info_types; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.tbl_contact_info_type (
+CREATE TABLE public.tbl_contact_info_types (
     id integer NOT NULL,
     type character varying NOT NULL
 );
@@ -190,7 +190,7 @@ CREATE SEQUENCE public.tbl_contact_info_type_id_seq
 -- Name: tbl_contact_info_type_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE public.tbl_contact_info_type_id_seq OWNED BY public.tbl_contact_info_type.id;
+ALTER SEQUENCE public.tbl_contact_info_type_id_seq OWNED BY public.tbl_contact_info_types.id;
 
 
 --
@@ -307,10 +307,10 @@ ALTER TABLE ONLY public.tbl_contact_info ALTER COLUMN id SET DEFAULT nextval('pu
 
 
 --
--- Name: tbl_contact_info_type id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: tbl_contact_info_types id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.tbl_contact_info_type ALTER COLUMN id SET DEFAULT nextval('public.tbl_contact_info_type_id_seq'::regclass);
+ALTER TABLE ONLY public.tbl_contact_info_types ALTER COLUMN id SET DEFAULT nextval('public.tbl_contact_info_type_id_seq'::regclass);
 
 
 --
@@ -375,10 +375,10 @@ ALTER TABLE ONLY public.tbl_contact_info
 
 
 --
--- Name: tbl_contact_info_type tbl_contact_info_type_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: tbl_contact_info_types tbl_contact_info_type_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.tbl_contact_info_type
+ALTER TABLE ONLY public.tbl_contact_info_types
     ADD CONSTRAINT tbl_contact_info_type_pkey PRIMARY KEY (id);
 
 
@@ -435,7 +435,7 @@ ALTER TABLE ONLY public.tbl_contact
 --
 
 ALTER TABLE ONLY public.tbl_contact_info
-    ADD CONSTRAINT tbl_contact_info_tbl_contact_contact_id_fkey FOREIGN KEY (tbl_contact_info_type_id) REFERENCES public.tbl_contact_info_type(id);
+    ADD CONSTRAINT tbl_contact_info_tbl_contact_contact_id_fkey FOREIGN KEY (tbl_contact_info_type_id) REFERENCES public.tbl_contact_info_types(id);
 
 
 --
@@ -467,6 +467,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190119003637'),
 ('20190122231634'),
 ('20190122232102'),
-('20190122232349');
+('20190122232349'),
+('20190123020322');
 
 
