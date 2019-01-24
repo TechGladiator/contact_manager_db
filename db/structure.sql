@@ -169,15 +169,15 @@ ALTER SEQUENCE public.tbl_contact_info_id_seq OWNED BY public.tbl_contact_info.i
 
 CREATE TABLE public.tbl_contact_info_types (
     id integer NOT NULL,
-    type character varying NOT NULL
+    name character varying NOT NULL
 );
 
 
 --
--- Name: tbl_contact_info_type_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+-- Name: tbl_contact_info_types_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE public.tbl_contact_info_type_id_seq
+CREATE SEQUENCE public.tbl_contact_info_types_id_seq
     AS integer
     START WITH 1001
     INCREMENT BY 1
@@ -187,10 +187,10 @@ CREATE SEQUENCE public.tbl_contact_info_type_id_seq
 
 
 --
--- Name: tbl_contact_info_type_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+-- Name: tbl_contact_info_types_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE public.tbl_contact_info_type_id_seq OWNED BY public.tbl_contact_info_types.id;
+ALTER SEQUENCE public.tbl_contact_info_types_id_seq OWNED BY public.tbl_contact_info_types.id;
 
 
 --
@@ -310,7 +310,7 @@ ALTER TABLE ONLY public.tbl_contact_info ALTER COLUMN id SET DEFAULT nextval('pu
 -- Name: tbl_contact_info_types id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.tbl_contact_info_types ALTER COLUMN id SET DEFAULT nextval('public.tbl_contact_info_type_id_seq'::regclass);
+ALTER TABLE ONLY public.tbl_contact_info_types ALTER COLUMN id SET DEFAULT nextval('public.tbl_contact_info_types_id_seq'::regclass);
 
 
 --
@@ -468,6 +468,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190122231634'),
 ('20190122232102'),
 ('20190122232349'),
-('20190123020322');
+('20190123020322'),
+('20190123175213'),
+('20190123194943');
 
 
