@@ -97,41 +97,6 @@ ALTER SEQUENCE public.tbl_address_info_id_seq OWNED BY public.tbl_address_info.i
 
 
 --
--- Name: tbl_contact; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.tbl_contact (
-    contact_id integer NOT NULL,
-    fname character varying NOT NULL,
-    mname character varying,
-    lname character varying NOT NULL,
-    title character varying,
-    tbl_contact_type_id integer NOT NULL,
-    tbl_import_id integer
-);
-
-
---
--- Name: tbl_contact_contact_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.tbl_contact_contact_id_seq
-    AS integer
-    START WITH 1001
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: tbl_contact_contact_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.tbl_contact_contact_id_seq OWNED BY public.tbl_contact.contact_id;
-
-
---
 -- Name: tbl_contact_info; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -225,6 +190,41 @@ ALTER SEQUENCE public.tbl_contact_type_id_seq OWNED BY public.tbl_contact_type.i
 
 
 --
+-- Name: tbl_contacts; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.tbl_contacts (
+    contact_id integer NOT NULL,
+    fname character varying NOT NULL,
+    mname character varying,
+    lname character varying NOT NULL,
+    title character varying,
+    tbl_contact_type_id integer NOT NULL,
+    tbl_import_id integer
+);
+
+
+--
+-- Name: tbl_contacts_contact_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.tbl_contacts_contact_id_seq
+    AS integer
+    START WITH 1001
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: tbl_contacts_contact_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.tbl_contacts_contact_id_seq OWNED BY public.tbl_contacts.contact_id;
+
+
+--
 -- Name: tbl_import; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -293,13 +293,6 @@ ALTER TABLE ONLY public.tbl_address_info ALTER COLUMN id SET DEFAULT nextval('pu
 
 
 --
--- Name: tbl_contact contact_id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.tbl_contact ALTER COLUMN contact_id SET DEFAULT nextval('public.tbl_contact_contact_id_seq'::regclass);
-
-
---
 -- Name: tbl_contact_info id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -318,6 +311,13 @@ ALTER TABLE ONLY public.tbl_contact_info_types ALTER COLUMN id SET DEFAULT nextv
 --
 
 ALTER TABLE ONLY public.tbl_contact_type ALTER COLUMN id SET DEFAULT nextval('public.tbl_contact_type_id_seq'::regclass);
+
+
+--
+-- Name: tbl_contacts contact_id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.tbl_contacts ALTER COLUMN contact_id SET DEFAULT nextval('public.tbl_contacts_contact_id_seq'::regclass);
 
 
 --
@@ -383,10 +383,10 @@ ALTER TABLE ONLY public.tbl_contact_info_types
 
 
 --
--- Name: tbl_contact tbl_contact_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: tbl_contacts tbl_contact_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.tbl_contact
+ALTER TABLE ONLY public.tbl_contacts
     ADD CONSTRAINT tbl_contact_pkey PRIMARY KEY (contact_id);
 
 
@@ -419,14 +419,14 @@ ALTER TABLE ONLY public.tbl_address_info
 --
 
 ALTER TABLE ONLY public.tbl_address_info
-    ADD CONSTRAINT tbl_address_info_tbl_contact_contact_id_fkey FOREIGN KEY (tbl_contact_contact_id) REFERENCES public.tbl_contact(contact_id);
+    ADD CONSTRAINT tbl_address_info_tbl_contact_contact_id_fkey FOREIGN KEY (tbl_contact_contact_id) REFERENCES public.tbl_contacts(contact_id);
 
 
 --
--- Name: tbl_contact tbl_contact_contact_type_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: tbl_contacts tbl_contact_contact_type_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.tbl_contact
+ALTER TABLE ONLY public.tbl_contacts
     ADD CONSTRAINT tbl_contact_contact_type_id_fkey FOREIGN KEY (tbl_contact_type_id) REFERENCES public.tbl_contact_type(id);
 
 
@@ -443,14 +443,14 @@ ALTER TABLE ONLY public.tbl_contact_info
 --
 
 ALTER TABLE ONLY public.tbl_contact_info
-    ADD CONSTRAINT tbl_contact_info_tbl_contact_info_type_id_fkey FOREIGN KEY (tbl_contact_contact_id) REFERENCES public.tbl_contact(contact_id);
+    ADD CONSTRAINT tbl_contact_info_tbl_contact_info_type_id_fkey FOREIGN KEY (tbl_contact_contact_id) REFERENCES public.tbl_contacts(contact_id);
 
 
 --
--- Name: tbl_contact tbl_contact_tbl_import_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: tbl_contacts tbl_contact_tbl_import_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.tbl_contact
+ALTER TABLE ONLY public.tbl_contacts
     ADD CONSTRAINT tbl_contact_tbl_import_id_fkey FOREIGN KEY (tbl_import_id) REFERENCES public.tbl_import(id);
 
 
@@ -470,6 +470,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190122232349'),
 ('20190123020322'),
 ('20190123175213'),
-('20190123194943');
+('20190123194943'),
+('20190124195900');
 
 
